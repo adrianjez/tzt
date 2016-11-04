@@ -49,12 +49,12 @@ app.get('/studenci', function(req, res) {
 app.get('/programista/:programistaId/', function(req, res) {
 	var txt = "";
 	redis.hgetall('programista:' + req.params.programistaId, function(err, result) {
-		res.send(JSON.stringify(result));
-		for(var k in resp){
-			txt += resp[k] + "<a href='delete/?id=" +req.params.programistaId + resp[k] + "</a><br>";
+		//res.send(JSON.stringify(result));
+		for(var k in result){
+			txt += "<a href='/" +req.params.programistaId  + "</a><br>";
 		}
 		res.end(txt);
-		console.log(resp)
+		console.log(result)
 	});
 });
 
